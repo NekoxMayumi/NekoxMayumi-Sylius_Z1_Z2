@@ -2,7 +2,7 @@
 
 namespace App\Entity\Supplier;
 
-
+use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**

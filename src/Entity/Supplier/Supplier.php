@@ -19,7 +19,7 @@ class Supplier implements SupplierInterface
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private int $id;
+    protected int $id;
 
     /**
      * @var string
