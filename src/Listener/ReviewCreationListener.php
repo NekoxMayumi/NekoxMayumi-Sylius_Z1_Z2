@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace App\Listener;
 
+use App\Checker\TrustedCustomerCheckerInterface;
 use SM\Factory\FactoryInterface;
 use Sylius\Component\Core\Model\CustomerInterface;
 use Sylius\Component\Core\ProductReviewTransitions;
@@ -15,10 +16,21 @@ final class ReviewCreationListener
      */
     private FactoryInterface $stateMachineFactory;
 
-    public function __construct(FactoryInterface $stateMachineFactory)
+    /**
+     * @var TrustedCustomerCheckerInterface
+     */
+    private TrustedCustomerCheckerInterface $trustedCustomerChecker;
+
+    /**
+     * @param FactoryInterface $stateMachineFactory
+     * @param TrustedCustomerCheckerInterface $trustedCustomerChecker
+     */
+    public function __construct(FactoryInterface $stateMachineFactory, TrustedCustomerCheckerInterface $trustedCustomerChecker)
     {
         $this->stateMachineFactory = $stateMachineFactory;
+        $this->trustedCustomerChecker = $trustedCustomerChecker;
     }
+
 
     public function acceptForTrustedAuthor(GenericEvent $event): void
     {
@@ -28,7 +40,7 @@ final class ReviewCreationListener
         /** @var CustomerInterface $author */
        $author = $review->getAuthor();
 
-       if ($author->getGroup() === null || $author->getGroup()->getCode() !== 'TRUSTED'){
+       if (!$this->trustedCustomerChecker->check($author)){
            return;
        }
 

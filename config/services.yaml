@@ -68,5 +68,6 @@ services:
     App\Listener\ReviewCreationListener:
         arguments:
             - '@sm.factory'
+            - '@App\Checker\TrustedCustomerCheckerInterface'
         tags:
             - {name: kernel.event_listener, event: sylius.product_review.pre_create, method: acceptForTrustedAuthor}
