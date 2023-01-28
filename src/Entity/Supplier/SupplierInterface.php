@@ -2,6 +2,7 @@
 
 namespace App\Entity\Supplier;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -22,4 +23,8 @@ interface SupplierInterface extends ResourceInterface
     public function getState(): string;
 
     public function setState(string $state): void;
+
+    public function getProducts(): Collection;
+
+    public function countProducts(): int;
 }
