@@ -17,3 +17,11 @@ winzou_state_machine:
                     on: ['trust']
                     do: ['@App\Notifier\SupplierTrustingNotifierInterface', 'notify']
                     args: ['object']
+    sylius_shipment:
+        callbacks:
+            after:
+                assign_shipment_code:
+                    on: ['ship']
+                    do: ['@App\Provider\ShipmentCodeProviderInterface', 'assign']
+                    args: ['object']
+                    

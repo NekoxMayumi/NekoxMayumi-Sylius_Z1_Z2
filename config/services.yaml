@@ -79,7 +79,6 @@ services:
                 
     App\Assigner\ShipmentCodeAssignerInterface:
         class: App\Assigner\ShipmentCodeAssigner
-        # noinspection MissingService
         arguments: 
             - '@App\Provider\ShipmentCodeProviderInterface'
             - '@sylius.manager.shipment'
