@@ -3,3 +3,5 @@ app:
         supplier: "Supplier"
         suppliers: "Suppliers"
         trust: "Trust"
+        t_shirt_product: "T-Shirt product"
+        
