@@ -46,4 +46,3 @@ sylius_admin_product_create_t_shirt:
                     form: "@SyliusAdmin/Product/_form.html.twig"
                 route:
                     name: sylius_admin_product_create_simple
-

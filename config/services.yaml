@@ -76,3 +76,11 @@ services:
         decorates: sylius.factory.product
         arguments: 
             - '@App\Factory\ProductFactory.inner'
+                
+    App\Assigner\ShipmentCodeAssignerInterface:
+        class: App\Assigner\ShipmentCodeAssigner
+        # noinspection MissingService
+        arguments: 
+            - '@App\Provider\ShipmentCodeProviderInterface'
+            - '@sylius.manager.shipment'
+        public: true

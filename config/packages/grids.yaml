@@ -66,5 +66,5 @@ sylius_grid:
                                 t_shirt:  
                                     label: app.ui.t_shirt_product
                                     icon: plus
-                                    route: app_admin_product_create_t_shirt
+                                    route: sylius_admin_product_create_t_shirt
                                 
