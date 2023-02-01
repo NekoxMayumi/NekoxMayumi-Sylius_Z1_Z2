@@ -20,13 +20,15 @@ app_admin_supplier_trust:
     path: /admin/suppliers/{id}/trust
     methods: [PUT]
     defaults:
-        _controller: app.controller.supplier:applyStateMachineTransitionAction
+        _controller: app.controller.supplier::applyStateMachineTransitionAction
         _sylius:
+            csrf_protection: false
             state_machine:
                 graph: app_supplier
                 transition: trust
             redirect: referer
             flash: app.ui.supplier_trusted
+            
             
 sylius_admin_product_create_t_shirt:
     path:  /admin/products/new/t-shirt
