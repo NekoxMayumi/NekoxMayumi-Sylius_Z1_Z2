@@ -4,4 +4,6 @@ app:
         suppliers: "Suppliers"
         trust: "Trust"
         t_shirt_product: "T-Shirt product"
+        color: "Color"
+        colors: "Colors"
         

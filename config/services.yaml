@@ -76,10 +76,16 @@ services:
         decorates: sylius.factory.product
         arguments: 
             - '@App\Factory\ProductFactory.inner'
-                
+            
+    App\Provider\ShipmentCodeProviderInterface:
+        class: App\Provider\DummyShipmentCodeProvider
+        public: true
+        
     App\Assigner\ShipmentCodeAssignerInterface:
         class: App\Assigner\ShipmentCodeAssigner
         arguments: 
             - '@App\Provider\ShipmentCodeProviderInterface'
             - '@sylius.manager.shipment'
         public: true
+        
+

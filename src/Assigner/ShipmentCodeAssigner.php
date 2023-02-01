@@ -4,6 +4,9 @@ namespace App\Assigner;
 
 use App\Provider\ShipmentCodeProviderInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Sylius\Component\Core\Model\ShipmentInterface;
 
 final class ShipmentCodeAssigner implements ShipmentCodeAssignerInterface
@@ -14,20 +17,24 @@ final class ShipmentCodeAssigner implements ShipmentCodeAssignerInterface
     private ShipmentCodeProviderInterface $shipmentCodeProvider;
 
     /**
-     * @var ObjectManager
+     * @var EntityManager
      */
-    private ObjectManager $shipmentManager;
+    private EntityManager $shipmentManager;
 
     /**
      * @param ShipmentCodeProviderInterface $shipmentCodeProvider
-     * @param ObjectManager $shipmentManager
+     * @param EntityManager $shipmentManager
      */
-    public function __construct(ShipmentCodeProviderInterface $shipmentCodeProvider, ObjectManager $shipmentManager)
+    public function __construct(ShipmentCodeProviderInterface $shipmentCodeProvider, EntityManager $shipmentManager)
     {
         $this->shipmentCodeProvider = $shipmentCodeProvider;
         $this->shipmentManager = $shipmentManager;
     }
 
+    /**
+     * @throws OptimisticLockException
+     * @throws ORMException
+     */
     public function assign(ShipmentInterface $shipment): void
     {
        if ($shipment->getState() !== ShipmentInterface::STATE_SHIPPED) {

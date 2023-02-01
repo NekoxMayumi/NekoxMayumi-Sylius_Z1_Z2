@@ -22,6 +22,6 @@ winzou_state_machine:
             after:
                 assign_shipment_code:
                     on: ['ship']
-                    do: ['@App\Provider\ShipmentCodeProviderInterface', 'assign']
+                    do: ['@App\Assigner\ShipmentCodeAssignerInterface', 'assign']
                     args: ['object']
                     

@@ -35,6 +35,6 @@ final class ProductFactory implements ProductFactoryInterface
 
     public function createWithVariant(): ProductInterface
     {
-      return $this->createWithVariant();
+      return $this->baseFactory->createWithVariant();
     }
 }

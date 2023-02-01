@@ -67,4 +67,12 @@ sylius_grid:
                                     label: app.ui.t_shirt_product
                                     icon: plus
                                     route: sylius_admin_product_create_t_shirt
-                                
+        app_admin_color:
+            driver:
+                options:
+                    class: "%app.model.color.class%"
+            fields:
+                name:
+                    type: string
+                    label: sylius.ui.name
+          

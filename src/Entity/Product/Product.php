@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Product;
 
+use App\Entity\Product\ProductColor\ProductColorInterface;
 use App\Entity\Supplier\SupplierInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Core\Model\Product as BaseProduct;
@@ -23,8 +24,22 @@ class Product extends BaseProduct
     private SupplierInterface $supplier;
 
     /**
-     * @return SupplierInterface
+     * @var ProductColorInterface|null
+     * @ORM\ManyToOne(targetEntity="App\Entity\Product\ProductColor\ProductColor", inversedBy="products")
+     * @ORM\JoinColumn(name="color_id", referencedColumnName="id")
      */
+    protected ?ProductColorInterface $color;
+
+    public function getColor(): ?ProductColorInterface
+    {
+        return $this->color;
+    }
+
+    public function setColor(?ProductColorInterface $color): void
+    {
+        $this->color = $color;
+    }
+
     public function getSupplier(): SupplierInterface
     {
         return $this->supplier;
