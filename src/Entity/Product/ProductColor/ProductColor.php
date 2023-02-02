@@ -13,20 +13,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProductColor implements ProductColorInterface
 {
-    public const STATE_NEW = "new";
 
     /**
-     * @var int
+     * @var int|null
      * @ORM\Column(type="integer")
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected int $id;
+    protected ?int $id;
     /**
-     * @var string
+     * @var string|null
      * @ORM\Column(type="string")
      */
-    protected string $name;
+    protected ?string $name;
 
     /**
      * @var Collection
@@ -35,21 +34,15 @@ class ProductColor implements ProductColorInterface
      */
     protected Collection $products;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private string $state = self::STATE_NEW;
-
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -58,15 +51,4 @@ class ProductColor implements ProductColorInterface
     {
         return $this->products;
     }
-    public function getState(): string
-    {
-        return $this->state;
-    }
-    public function setState(string $state): void
-    {
-        $this->state = $state;
-    }
-
-
-
 }

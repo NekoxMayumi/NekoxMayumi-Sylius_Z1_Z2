@@ -7,5 +7,5 @@ sylius_resource:
         app.color:        
             classes:
                 model: App\Entity\Product\ProductColor\ProductColor
-                form: App\Form\Type\ProductType
+                
             

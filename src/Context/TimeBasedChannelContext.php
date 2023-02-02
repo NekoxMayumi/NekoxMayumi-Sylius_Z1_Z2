@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Context;
@@ -16,7 +17,6 @@ final class TimeBasedChannelContext implements ChannelContextInterface
 
     /** @var ClockInterface */
     private ClockInterface $clock;
-
     /**
      * @param ChannelRepositoryInterface $channelRepository
      * @param ClockInterface $clock
@@ -26,8 +26,6 @@ final class TimeBasedChannelContext implements ChannelContextInterface
         $this->channelRepository = $channelRepository;
         $this->clock = $clock;
     }
-
-
     public function getChannel(): ChannelInterface
     {
         if ($this->clock->isNight()) {

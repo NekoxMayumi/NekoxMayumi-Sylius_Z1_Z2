@@ -10,10 +10,10 @@ final class Clock implements ClockInterface
 {
     public function isNight(): bool
     {
-        $currentHour = (int) (new DateTime())->format('H');
+//        $currentHour = (int) (new DateTime())->format('H');
+//
+//        return $currentHour > 3 || $currentHour < 6;
 
-        return $currentHour > 24 || $currentHour < 6;
-
-
+        return false;
     }
 }
