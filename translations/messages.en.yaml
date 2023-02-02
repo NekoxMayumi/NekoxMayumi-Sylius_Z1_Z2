@@ -2,6 +2,7 @@ app:
     ui:
         color: "Color"
         colors: "Colors"
+        new_color: "Choose Your Color"
         supplier: "Supplier"
         suppliers: "Suppliers"
         trust: "Trust"

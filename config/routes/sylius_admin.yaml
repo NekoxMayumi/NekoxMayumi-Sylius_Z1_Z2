@@ -29,6 +29,16 @@ app_admin_supplier_trust:
             redirect: referer
             flash: app.ui.supplier_trusted
             
+app_color:
+    resource: |
+        alias: app.color
+        except: ['show']
+        section: admin
+        templates: "@SyliusAdmin\\Crud"
+        grid: app_admin_color
+    type: sylius.resource
+    prefix: /admin
+            
             
 sylius_admin_product_create_t_shirt:
     path:  /admin/products/new/t-shirt
